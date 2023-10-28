@@ -1,0 +1,16 @@
+api_platform:
+    formats:
+        jsonld: ['application/ld+json']
+        json: ['application/json']
+        html: ['text/html']
+        jsonhal: ['application/hal+json']
+    swagger:
+        api_keys:
+            access_token:
+                name: Authorization
+                type: header
+when@prod:
+        enable_docs: false
+        enable_entrypoint: false
+        enable_swagger: false
+        enable_swagger_ui: false

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.purple {
+    background-color: #1B1022;
+    }
+
+.book {
+    background-color: #D0B294;
+}
