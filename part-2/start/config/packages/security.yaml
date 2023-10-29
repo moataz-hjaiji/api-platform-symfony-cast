@@ -12,12 +12,12 @@ security:
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
-            #security: false
+            security: false
         main:
             lazy: true
             provider: app_user_provider
             json_login:
-                check_path: app_login
+                check_path: ^/login$
                 username_path: email
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
@@ -37,15 +37,15 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/login, roles: PUBLIC_ACCESS } # Allow access to the login page without authentication
         - { path: ^/$, roles: PUBLIC_ACCESS } # Allow access to the root ("/") route without authentication
-        - { path: ^/, roles: IS_AUTHENTICATED_FULLY } # Require authentication for all other routes
+        # - { path: ^/, roles: IS_AUTHENTICATED_FULLY } # Require authentication for all other routes
         # - { path: ^/profile, roles: ROLE_USER }
        # - { path: ^/$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
 #        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY } # Allows accessing the Swagger UI docs
 #        - { path: ^/, roles: PUBLIC_ACCESS }
-#        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:
